@@ -1,44 +1,66 @@
 \contentsline {chapter}{\centering \heiti \Large 目\hskip 1em\relax 录}{1}{section*.1}%
-\contentsline {section}{\numberline {0.1}远程分支创建与提交全流程指南}{1}{section.0.1}%
-\contentsline {subsection}{\numberline {0.1.1}完整操作流程}{1}{subsection.0.1.1}%
-\contentsline {subsection}{\numberline {0.1.2}关键步骤详解}{1}{subsection.0.1.2}%
-\contentsline {subsubsection}{1. 创建本地分支}{1}{subsection.0.1.2}%
-\contentsline {subsubsection}{2. 推送至远程仓库}{2}{subsection.0.1.2}%
-\contentsline {subsubsection}{3. 验证远程分支}{2}{subsection.0.1.2}%
-\contentsline {subsection}{\numberline {0.1.3}分支状态管理}{2}{subsection.0.1.3}%
-\contentsline {subsection}{\numberline {0.1.4}多场景应用示例}{2}{subsection.0.1.4}%
-\contentsline {subsubsection}{场景1：新功能开发}{2}{subsection.0.1.4}%
-\contentsline {subsubsection}{场景2：紧急热修复}{3}{subsection.0.1.4}%
-\contentsline {subsubsection}{场景3：团队协作开发}{3}{subsection.0.1.4}%
-\contentsline {subsection}{\numberline {0.1.5}最佳实践}{3}{subsection.0.1.5}%
-\contentsline {subsection}{\numberline {0.1.6}故障排除}{4}{subsection.0.1.6}%
-\contentsline {section}{\numberline {0.2}远程分支删除操作指南}{4}{section.0.2}%
-\contentsline {subsection}{\numberline {0.2.1}删除方法详解}{4}{subsection.0.2.1}%
-\contentsline {subsection}{\numberline {0.2.2}操作流程图示}{5}{subsection.0.2.2}%
-\contentsline {subsection}{\numberline {0.2.3}删除前验证步骤}{5}{subsection.0.2.3}%
-\contentsline {subsection}{\numberline {0.2.4}删除后清理操作}{5}{subsection.0.2.4}%
-\contentsline {subsection}{\numberline {0.2.5}特殊场景处理}{5}{subsection.0.2.5}%
-\contentsline {subsection}{\numberline {0.2.6}最佳实践}{6}{subsection.0.2.6}%
-\contentsline {subsection}{\numberline {0.2.7}GUI工具操作}{6}{subsection.0.2.7}%
-\contentsline {subsection}{\numberline {0.2.8}删除状态验证}{6}{subsection.0.2.8}%
-\contentsline {section}{\numberline {0.3}误删分支恢复操作指南}{6}{section.0.3}%
-\contentsline {subsection}{\numberline {0.3.1}恢复流程详解}{6}{subsection.0.3.1}%
-\contentsline {subsection}{\numberline {0.3.2}恢复原理图示}{7}{subsection.0.3.2}%
-\contentsline {subsection}{\numberline {0.3.3}关键恢复技术}{7}{subsection.0.3.3}%
-\contentsline {subsubsection}{1. 引用日志查询}{7}{subsection.0.3.3}%
-\contentsline {subsubsection}{2. 分支重建方法}{7}{subsection.0.3.3}%
-\contentsline {subsubsection}{3. 恢复验证}{8}{subsection.0.3.3}%
-\contentsline {subsection}{\numberline {0.3.4}特殊场景处理}{8}{subsection.0.3.4}%
-\contentsline {subsection}{\numberline {0.3.5}预防措施}{8}{subsection.0.3.5}%
-\contentsline {subsection}{\numberline {0.3.6}恢复工作流示例}{8}{subsection.0.3.6}%
-\contentsline {subsection}{\numberline {0.3.7}图形化工具操作}{9}{subsection.0.3.7}%
-\contentsline {section}{\numberline {0.4}远程仓库文件删除操作指南}{9}{section.0.4}%
-\contentsline {subsection}{\numberline {0.4.1}文件删除流程}{10}{subsection.0.4.1}%
-\contentsline {subsection}{\numberline {0.4.2}操作原理图示}{10}{subsection.0.4.2}%
-\contentsline {subsection}{\numberline {0.4.3}关键参数解析}{10}{subsection.0.4.3}%
-\contentsline {subsection}{\numberline {0.4.4}特殊场景处理}{10}{subsection.0.4.4}%
-\contentsline {subsection}{\numberline {0.4.5}删除验证步骤}{11}{subsection.0.4.5}%
-\contentsline {subsection}{\numberline {0.4.6}最佳实践}{11}{subsection.0.4.6}%
-\contentsline {subsection}{\numberline {0.4.7}批量删除示例}{11}{subsection.0.4.7}%
-\contentsline {subsection}{\numberline {0.4.8}GUI工具操作}{12}{subsection.0.4.8}%
+\contentsline {section}{\numberline {0.1}远程分支创建与提交全流程指南}{2}{section.0.1}%
+\contentsline {subsection}{\numberline {0.1.1}完整操作流程}{2}{subsection.0.1.1}%
+\contentsline {subsection}{\numberline {0.1.2}关键步骤详解}{2}{subsection.0.1.2}%
+\contentsline {subsubsection}{1. 创建本地分支}{2}{subsection.0.1.2}%
+\contentsline {subsubsection}{2. 推送至远程仓库}{3}{subsection.0.1.2}%
+\contentsline {subsubsection}{3. 验证远程分支}{3}{subsection.0.1.2}%
+\contentsline {subsection}{\numberline {0.1.3}分支状态管理}{3}{subsection.0.1.3}%
+\contentsline {subsection}{\numberline {0.1.4}多场景应用示例}{3}{subsection.0.1.4}%
+\contentsline {subsubsection}{场景1：新功能开发}{3}{subsection.0.1.4}%
+\contentsline {subsubsection}{场景2：紧急热修复}{4}{subsection.0.1.4}%
+\contentsline {subsubsection}{场景3：团队协作开发}{4}{subsection.0.1.4}%
+\contentsline {subsection}{\numberline {0.1.5}最佳实践}{4}{subsection.0.1.5}%
+\contentsline {subsection}{\numberline {0.1.6}故障排除}{5}{subsection.0.1.6}%
+\contentsline {section}{\numberline {0.2}远程分支删除操作指南}{5}{section.0.2}%
+\contentsline {subsection}{\numberline {0.2.1}删除方法详解}{5}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {0.2.2}操作流程图示}{6}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {0.2.3}删除前验证步骤}{6}{subsection.0.2.3}%
+\contentsline {subsection}{\numberline {0.2.4}删除后清理操作}{6}{subsection.0.2.4}%
+\contentsline {subsection}{\numberline {0.2.5}特殊场景处理}{6}{subsection.0.2.5}%
+\contentsline {subsection}{\numberline {0.2.6}最佳实践}{7}{subsection.0.2.6}%
+\contentsline {subsection}{\numberline {0.2.7}GUI工具操作}{7}{subsection.0.2.7}%
+\contentsline {subsection}{\numberline {0.2.8}删除状态验证}{7}{subsection.0.2.8}%
+\contentsline {section}{\numberline {0.3}误删分支恢复操作指南}{7}{section.0.3}%
+\contentsline {subsection}{\numberline {0.3.1}恢复流程详解}{7}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {0.3.2}恢复原理图示}{8}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {0.3.3}关键恢复技术}{8}{subsection.0.3.3}%
+\contentsline {subsubsection}{1. 引用日志查询}{8}{subsection.0.3.3}%
+\contentsline {subsubsection}{2. 分支重建方法}{8}{subsection.0.3.3}%
+\contentsline {subsubsection}{3. 恢复验证}{9}{subsection.0.3.3}%
+\contentsline {subsection}{\numberline {0.3.4}特殊场景处理}{9}{subsection.0.3.4}%
+\contentsline {subsection}{\numberline {0.3.5}预防措施}{9}{subsection.0.3.5}%
+\contentsline {subsection}{\numberline {0.3.6}恢复工作流示例}{9}{subsection.0.3.6}%
+\contentsline {subsection}{\numberline {0.3.7}图形化工具操作}{10}{subsection.0.3.7}%
+\contentsline {section}{\numberline {0.4}远程仓库文件删除操作指南}{10}{section.0.4}%
+\contentsline {subsection}{\numberline {0.4.1}文件删除流程}{11}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {0.4.2}操作原理图示}{11}{subsection.0.4.2}%
+\contentsline {subsection}{\numberline {0.4.3}关键参数解析}{11}{subsection.0.4.3}%
+\contentsline {subsection}{\numberline {0.4.4}特殊场景处理}{11}{subsection.0.4.4}%
+\contentsline {subsection}{\numberline {0.4.5}删除验证步骤}{12}{subsection.0.4.5}%
+\contentsline {subsection}{\numberline {0.4.6}最佳实践}{12}{subsection.0.4.6}%
+\contentsline {subsection}{\numberline {0.4.7}批量删除示例}{12}{subsection.0.4.7}%
+\contentsline {subsection}{\numberline {0.4.8}GUI工具操作}{13}{subsection.0.4.8}%
+\contentsline {section}{\numberline {0.5}远程分支创建与提交全流程指南}{15}{section.0.5}%
+\contentsline {subsection}{\numberline {0.5.1}完整操作流程}{15}{subsection.0.5.1}%
+\contentsline {subsection}{\numberline {0.5.2}关键步骤详解}{15}{subsection.0.5.2}%
+\contentsline {subsubsection}{1. 创建本地分支}{15}{subsection.0.5.2}%
+\contentsline {subsubsection}{2. 推送至远程仓库}{16}{subsection.0.5.2}%
+\contentsline {subsubsection}{3. 验证远程分支}{16}{subsection.0.5.2}%
+\contentsline {subsection}{\numberline {0.5.3}分支状态管理}{16}{subsection.0.5.3}%
+\contentsline {subsection}{\numberline {0.5.4}多场景应用示例}{16}{subsection.0.5.4}%
+\contentsline {subsubsection}{场景1：新功能开发}{16}{subsection.0.5.4}%
+\contentsline {subsubsection}{场景2：紧急热修复}{17}{subsection.0.5.4}%
+\contentsline {subsubsection}{场景3：团队协作开发}{17}{subsection.0.5.4}%
+\contentsline {subsection}{\numberline {0.5.5}最佳实践}{17}{subsection.0.5.5}%
+\contentsline {subsection}{\numberline {0.5.6}故障排除}{18}{subsection.0.5.6}%
+\contentsline {section}{\numberline {0.6}远程分支删除操作指南}{18}{section.0.6}%
+\contentsline {subsection}{\numberline {0.6.1}删除方法详解}{18}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {0.6.2}操作流程图示}{19}{subsection.0.6.2}%
+\contentsline {subsection}{\numberline {0.6.3}删除前验证步骤}{19}{subsection.0.6.3}%
+\contentsline {subsection}{\numberline {0.6.4}删除后清理操作}{19}{subsection.0.6.4}%
+\contentsline {subsection}{\numberline {0.6.5}特殊场景处理}{19}{subsection.0.6.5}%
+\contentsline {subsection}{\numberline {0.6.6}最佳实践}{20}{subsection.0.6.6}%
+\contentsline {subsection}{\numberline {0.6.7}GUI工具操作}{20}{subsection.0.6.7}%
+\contentsline {subsection}{\numberline {0.6.8}删除状态验证}{20}{subsection.0.6.8}%
 \contentsfinish 

@@ -1,0 +1,251 @@
+\section{远程分支创建与提交全流程指南}
+\textbf{一句话总结：}  
+通过本地分支关联远程仓库实现分支创建与提交，核心流程为：本地创建分支 → 推送至远程 → 开发提交 → 定期同步。
+
+\subsection{完整操作流程}
+\begin{enumerate}[leftmargin=*, nosep]
+    \item \textbf{创建本地分支} \\
+    {\color{red}\texttt{\$ git checkout -b feature/login}}\quad \textcolor{gray}{// 创建并切换到新分支}
+    
+    \item \textbf{关联远程仓库} \\
+   {\color{red} \texttt{\$ git push -u origin feature/login} }\\
+    \textcolor{gray}{→ 推送分支到远程并建立追踪关系（首次推送）}
+    
+    \item \textbf{开发并提交代码} \\
+    \texttt{\$ touch login.js} \\
+    {\color{red} \texttt{\$ git add login.js} }\\
+    {\color{red} \texttt{\$ git commit -m "添加登录页面"} }\\
+    {\color{red} \texttt{\$ git push} \quad \textcolor{gray}{// 后续提交只需git push}}
+    
+    \item \textbf{同步远程更新} \\
+    \texttt{\$ git pull origin feature/login} \quad \textcolor{gray}{// 获取他人提交}
+\end{enumerate}
+
+\subsection{关键步骤详解}
+\subsubsection{1. 创建本地分支}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{基于当前分支创建}：\\
+    \texttt{git branch <新分支名>} + \texttt{git checkout <新分支名>}
+    
+    \item \textbf{基于特定提交创建}：\\
+    \texttt{git checkout -b fix/issue-23 8a3f5e9}
+    
+    \item \textbf{克隆远程分支}：\\
+    \texttt{git checkout -b dev origin/dev}
+\end{itemize}
+
+\subsubsection{2. 推送至远程仓库}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{命令} & \textbf{作用} \\
+    \midrule
+    \texttt{git push -u origin <分支名>} & 首次推送并建立追踪 \\
+    \texttt{git push origin <分支名>} & 后续推送更新 \\
+    \texttt{git push --set-upstream origin <分支名>} & 为现有分支设置上游 \\
+    \texttt{git push -f} & 强制覆盖（慎用） \\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{3. 验证远程分支}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{查看远程分支}：\\
+    \texttt{git branch -r} \quad \textcolor{gray}{// 查看远程分支列表}
+    
+    \item \textbf{检查关联状态}：\\
+    \texttt{git branch -vv} \\
+    \textcolor{gray}{→ 显示 \texttt{feature/login [origin/feature/login]}}
+\end{itemize}
+
+\subsection{分支状态管理}
+\begin{center}
+\begin{tabular}{@{}llp{8cm}@{}}
+    \toprule
+    \textbf{状态} & \textbf{检测命令} & \textbf{处理方案} \\
+    \midrule
+    本地领先 & \texttt{git status} 提示"ahead" & 立即推送 \\
+    远程领先 & \texttt{git status} 提示"behind" & 先执行 \texttt{git pull} \\
+    冲突状态 & \texttt{git pull} 提示冲突 & 解决冲突后提交 \\
+    分支游离 & \texttt{HEAD detached} 警告 & 创建临时分支保存 \\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{多场景应用示例}
+\subsubsection{场景1：新功能开发}
+\begin{verbatim}
+# 创建登录功能分支
+git checkout -b feature/login
+git push -u origin feature/login
+
+# 开发并提交
+echo "function login(){}" > login.js
+git add login.js
+git commit -m "实现登录函数"
+git push
+
+# 创建PR/MR合并请求（GitHub/GitLab）
+\end{verbatim}
+
+\subsubsection{场景2：紧急热修复}
+\begin{verbatim}
+# 基于生产分支创建修复分支
+git checkout production
+git pull
+git checkout -b hotfix/auth-bug
+
+# 修复并推送
+vim auth.js
+git commit -am "修复权限验证漏洞"
+git push -u origin hotfix/auth-bug
+
+# 立即部署到生产环境
+\end{verbatim}
+
+\subsubsection{场景3：团队协作开发}
+\begin{verbatim}
+# 获取队友新建的远程分支
+git fetch origin
+git checkout -b feature/payment origin/feature/payment
+
+# 协作开发
+git add payment.js
+git commit -m "添加支付处理逻辑"
+git push
+
+# 同步队友提交
+git pull
+\end{verbatim}
+
+\subsection{最佳实践}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{命名规范}：使用 \texttt{feature/}、\texttt{fix/} 等前缀
+    \item \textbf{及时推送}：每日工作结束前推送代码
+    \item \textbf{分支清理}：合并后删除远程分支：\\
+    \texttt{git push origin --delete feature/login}
+    \item \textbf{权限控制}：保护主分支，强制Code Review
+    \item \textbf{钩子应用}：配置 \texttt{pre-push} 钩子运行测试
+\end{itemize}
+
+\subsection{故障排除}
+\begin{enumerate}[leftmargin=*, nosep]
+    \item \textbf{推送失败（无权限）} \\
+    \texttt{\$ git remote -v} \quad \textcolor{gray}{// 检查远程地址} \\
+    \texttt{\$ git remote set-url origin https://<token>@github.com/user/repo.git}
+    
+    \item \textbf{追踪关系丢失} \\
+    \texttt{\$ git branch -u origin/feature/login}
+    
+    \item \textbf{误删远程分支} \\
+    \texttt{\$ git reflog} \quad \textcolor{gray}{// 查找分支最后提交} \\
+    \texttt{\$ git push origin 8a3f5e9:feature/login} \quad \textcolor{gray}{// 恢复分支}
+\end{enumerate}
+
+
+\section{远程分支删除操作指南}
+\textbf{一句话总结：}  
+使用 \texttt{git push} 或 \texttt{git branch} 命令可安全删除远程分支，配合 \texttt{--delete} 参数精确控制清理范围，保持仓库整洁。
+
+\subsection{删除方法详解}
+\begin{enumerate}[leftmargin=*, nosep]
+    \item \textbf{标准删除命令} \\
+    {\color{red}\texttt{\$ git push origin --delete feature/login} }\\
+    \textcolor{gray}{→ 删除远程的 feature/login 分支}
+    
+    \item \textbf{等效简写命令} \\
+    \texttt{\$ git push origin :feature/login} \\
+    \textcolor{gray}{→ 冒号语法等效于 --delete}
+    
+    \item \textbf{批量删除分支} \\
+    \texttt{\$ git push origin --delete feat/old hotfix/test} \\
+    \textcolor{gray}{→ 同时删除多个分支}
+\end{enumerate}
+
+\subsection{操作流程图示}
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+\node (local) [draw] {本地仓库};
+\node (remote) [draw, right of=local] {远程仓库};
+\node (branch) [draw, above of=remote] {feature/login};
+
+\draw [->] (local) -- node[above] {删除指令} (remote);
+\draw [->, red] (branch) -- (remote);
+\draw [red] (2.5,1.5) circle (0.3) node {\texttt{X}};
+\end{tikzpicture}
+\end{center}
+
+\subsection{删除前验证步骤}
+\begin{enumerate}[leftmargin=*, nosep]
+    \item \textbf{检查分支状态} \\
+    {\color{red}\texttt{\$ git branch -a}}   \quad \textcolor{gray}{// 确认分支存在}
+    \begin{verbatim}
+  main
+* feature/login
+  remotes/origin/feature/login
+    \end{verbatim}
+    
+    \item \textbf{确认合并状态} \\
+    \texttt{\$ git log origin/main..origin/feature/login} \\
+    \textcolor{gray}{→ 检查是否有未合并的提交}
+    
+    \item \textbf{权限验证} \\
+    \textcolor{gray}{// 确保有远程仓库删除权限}
+\end{enumerate}
+
+\subsection{删除后清理操作}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{命令} & \textbf{作用} \\
+    \midrule
+    \texttt{git fetch -p} & 清除本地缓存的远程分支记录 \\
+    \texttt{git branch -D feature/login} & 删除本地关联分支 \\
+    \texttt{git remote prune origin} & 等效于 \texttt{git fetch -p} \\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{特殊场景处理}
+\begin{enumerate}[leftmargin=*, nosep]
+    \item \textbf{恢复误删分支} \\
+    \texttt{\$ git reflog} \quad \textcolor{gray}{// 查找分支最后提交} \\
+    \texttt{\$ git push origin 8a3f5e9:refs/heads/feature/login}
+    
+    \item \textbf{删除受保护分支} \\
+    \textcolor{gray}{→ 需在GitLab/GitHub设置中取消分支保护}
+    
+    \item \textbf{无权限删除} \\
+    \textcolor{gray}{→ 联系仓库管理员执行删除}
+\end{enumerate}
+
+\subsection{最佳实践}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{命名规范}：使用前缀如 \texttt{feat/}、\texttt{fix/} 便于识别
+    \item \textbf{自动化清理}：配置CI/CD自动删除合并后分支
+    \item \textbf{定期维护}：每月执行批量清理 \\
+    \texttt{git branch -r | grep 'origin/feat/' | sed 's/origin\///' | xargs git push origin --delete}
+    
+    \item \textbf{权限控制}：限制成员删除主分支权限
+    \item \textbf{备份机制}：重要分支删除前创建标签 \\
+    \texttt{git tag archive/feature/login-v1 origin/feature/login}
+\end{itemize}
+
+\subsection{GUI工具操作}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{GitHub}：仓库页面 → Branches → 分支右侧垃圾桶图标
+    \item \textbf{GitLab}：仓库 → Branches → 分支右侧删除按钮
+    \item \textbf{VS Code}：分支视图 → 远程分支右键"Delete Branch"
+    \item \textbf{GitKraken}：远程分支右键"Delete origin/feature/login"
+\end{itemize}
+
+\subsection{删除状态验证}
+\begin{verbatim}
+# 删除前
+$ git ls-remote origin
+8a3f5e9...refs/heads/feature/login
+
+# 删除后
+$ git ls-remote origin
+[feature/login 分支消失]
+\end{verbatim}
