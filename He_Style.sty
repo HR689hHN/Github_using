@@ -1,0 +1,221 @@
+% He_Style.sty - 自定义LaTeX文档样式包
+% 作者：Player_He
+% 创建日期：2025年8月22日
+% 最后更新：2025年8月22日
+% 描述：提供一套自定义的LaTeX文档样式，包括封面、页眉页脚、目录格式等
+
+% 声明包信息和兼容性
+\NeedsTeXFormat{LaTeX2e} % 声明兼容的LaTeX版本
+\ProvidesPackage{He_Style} % 声明包名称
+[2025/08/22 Custom style for document] % 包版本和描述
+
+% ==================== 基础宏包设置 ====================
+% 必需的宏包，确保文档基本功能
+
+% 图形处理宏包：支持插入和操作图片（如PNG、JPG、PDF等）
+\RequirePackage{graphicx}
+
+% 页面布局宏包：用于设置页面边距和其他布局参数
+\RequirePackage{geometry}
+
+% 设置自定义页边距（上下左右各不相同）
+\geometry{
+    left=2cm,       % 左边距：2厘米
+    right=2cm,      % 右边距：2厘米
+    top=2cm,         % 上边距：2厘米
+    bottom=2cm,     % 下边距：2厘米
+    headsep=20pt,      % 页眉与正文间距
+    footskip=30pt,     % 页脚基线到底部距离
+    includehead,  % 包含页眉在页面顶部区域内
+    includefoot   % 包含页脚在页面底部区域内
+}
+
+
+% ==================== 中文支持与目录格式 ====================
+% ctex宏包：提供中文排版支持（字体、标点、标题格式等）
+\RequirePackage{ctex}
+% 自定义目录标题格式：
+% - \centering: 居中显示
+% - \heiti: 使用黑体字
+% - \Large: 大号字体
+% - 添加"目录"二字并增加间距
+\ctexset{contentsname={\centering\heiti\Large 目\quad 录}}
+
+% ==================== 超链接与PDF设置 ====================
+% hyperref宏包：创建文档内的超链接和PDF书签
+% 注意：此宏包应在其他宏包之后加载（特别是fancyhdr之后）
+\RequirePackage{hyperref}
+% 配置超链接样式：
+\hypersetup{
+    colorlinks=true,    % 使用彩色链接而非边框
+    linkcolor=blue,     % 文档内部链接颜色（如目录、引用）
+    urlcolor=blue,      % 外部URL链接颜色
+    % 其他可选设置：
+    % citecolor=blue,   % 文献引用颜色
+    % filecolor=blue,   % 文件链接颜色
+    % anchorcolor=blue, % 锚点颜色
+    % pdftitle={},      % PDF文档标题
+    % pdfauthor={}      % PDF作者信息
+}
+
+% ==================== 页眉页脚自定义 ====================
+% fancyhdr宏包：提供灵活的页眉页脚定制功能
+\RequirePackage{fancyhdr}
+% 定义自定义页眉页脚样式"customstyle":
+\fancypagestyle{customstyle}{%
+    \fancyhf{} % 清除所有页眉页脚预设格式
+    \fancyhead[L]{\leftmark}   % 页眉左侧：显示当前章标题
+    \fancyhead[R]{\rightmark}  % 页眉右侧：显示当前节标题
+    \fancyfoot[C]{\thepage}    % 页脚居中：显示当前页码
+    \renewcommand{\headrulewidth}{0.4pt} % 页眉分隔线宽度（0.4磅）
+    \renewcommand{\footrulewidth}{0pt}   % 页脚分隔线宽度（0表示无分隔线）
+}
+
+% ==================== 字体设置 ====================
+% fontspec宏包：提供高级字体控制功能（需要XeLaTeX或LuaLaTeX引擎）
+\RequirePackage{fontspec}
+% 定义Times New Roman字体命令：
+% - \newfontfamily: 创建新的字体系列命令
+% - \timesnewroman: 字体命令名称
+% - {Times New Roman}: 系统字体名称（确保系统已安装）
+\newfontfamily{\timesnewroman}{Times New Roman} 
+
+% ==================== 自定义命令 ====================
+% 定义封面内容模板命令：\covercontent
+% 使用此命令可在文档中快速插入预设的封面布局
+\newcommand{\covercontent}{% 
+\begin{titlepage}
+    \centering % 封面内容整体居中
+    
+    % 顶部留白（2厘米）
+    \vspace*{2cm}
+    
+    % 主标题：
+    % {\Huge\heiti 商业经济学 \par} % 中文主标题（已注释）
+    {\fontsize{28}{24}\selectfont\itshape Business Economics \par} 
+    % \fontsize{20}{24}：设置字体大小为20pt，行距为24pt（行距通常为字体大小的1.2倍）
+    % \selectfont：应用字体设置
+    % \itshape：保持斜体样式
+    % 英文主标题（斜体）
+    
+    % 标题与副标题间距（1.5厘米）
+    \vspace{1.5cm}
+    
+    % 副标题：
+    % - \songti: 宋体（中文字体）
+    % - \timesnewroman: Times New Roman（英文字体）
+    % - Record: 副标题文本
+    % {\Large\songti \timesnewroman Record \par}
+       {\fontsize{20}{24}\selectfont\songti \timesnewroman Record  \par} 
+    % 副标题与图片间距（2厘米）
+    \vspace{2cm}
+    
+    % 插入Logo图片：
+    % - width=1.0\textwidth: 图片宽度等于文本宽度
+    % - figures/logo.png: 图片路径（相对于.tex文件）
+
+    % \includegraphics[width=1.0\textwidth]{figures/logo.png}
+    
+    % 填充剩余垂直空间（自动调整）
+    % \vfill
+      \vspace{2.5cm}
+
+    % 作者信息：
+    % - \Large: 大号字体
+    % - \songti: 宋体（中文字体）
+    % - \timesnewroman: Times New Roman（英文字体）
+    {\Large\songti \timesnewroman Author: Player\_He \par}
+    
+    % 行间距（0.5厘米）
+    \vspace{0.5cm}
+    
+    % 出版社信息：
+    {\Large\songti \timesnewroman Publisher: Angel \par}
+    
+    % 行间距（0.5厘米）
+    \vspace{0.5cm}
+    
+    % 日期信息：
+    % - \today: 自动生成当前日期
+    \newcommand{\smartdate}{%
+    \ifdefined\chinesedate%
+        \chinesedate% 中文日期
+    \else%
+        \ifcase\month\or
+        January\or February\or March\or April\or May\or June\or
+        July\or August\or September\or October\or November\or December\fi
+        \space\number\day, \number\year% 英文日期
+    \fi}
+        % 中文文档
+    % \newcommand{\chinesedte}{\CTEXtoday} % 启用中文日期
+    % {\Large\songti \timesnewroman \smartdate \par} % 输出中文日期
+    % 或者
+    % \renewcommand{\chinesedate}{} % 禁用中文日期
+    {\Large\songti  \timesnewroman \smartdate \par} % 输出英文日期
+
+    % 底部留白（1厘米）
+    \vspace{1.0cm}
+    
+    % 版权信息：
+    % - \small: 小号字体
+    % - \timesnewroman: Times New Roman字体
+    {\small \timesnewroman Copyright © 2025 Angel Publisher \par}
+\end{titlepage}
+}
+
+
+% ==================== 结束样式包定义 ====================
+% \endinput % 结束样式包定义，防止后续内容被误解析
+
+
+% ==================== 数学环境设置 ====================
+% amsmath宏包：提供高级数学环境和公式对齐功能
+\RequirePackage{amsmath}
+% 提供 align、gather、multline 等环境，解决基础 LaTeX 数学环境对齐问题
+% 例如：
+% \begin{align}
+%     a &= b + c \\
+%     d &= e - f
+% \end{align}   
+% 以上代码会自动对齐等号
+% 允许在数学模式中使用 \text 命令插入文本
+\RequirePackage{amsfonts} % 提供数学字体和符号，如 \mathbb
+\RequirePackage{amssymb} % 提供额外的数学符号，如 \blacksquare      
+\RequirePackage{enumitem} % 必须：支持 itemize 环境的 leftmargin, nosep 等参数
+\RequirePackage{fancyvrb} % 提供 verbatim 环境的增强功能
+% 允许在 verbatim 环境中使用 \text 命令插入文本
+\RequirePackage{verbatim} % 提供 verbatim 环境，允许插入代码
+% 允许在 verbatim 环境中使用 \text 命令插入文本
+\RequirePackage{listings} % 提供代码高亮和格式化功能
+% 设置代码高亮样式
+\RequirePackage{tabularx}
+% 提供自适应表格宽度的 tabularx 环境
+\RequirePackage{booktabs} % 提供表格线条支持，如 \toprule
+\RequirePackage{multirow} % 提供多行单元格支持
+\RequirePackage{array} % 提供数组支持
+\RequirePackage{colortbl} % 提供表格颜色支持
+\RequirePackage{float} % 提供浮动体支持，如图表
+\RequirePackage{placeins} % 提供浮动体位置控制
+\RequirePackage{tikz} % 提供绘图支持
+\RequirePackage{pgfplots} % 提供绘图支持
+\RequirePackage{pgfplotstable} % 提供表格绘图支持
+\RequirePackage{caption} % 提供图表标题格式
+\RequirePackage{subcaption} % 提供子图支持
+\RequirePackage{hyperref} % 提供超链接支持
+\RequirePackage{ifthen} % 提供条件语句支持      
+\RequirePackage{longtable} % 必须：支持跨页长表格
+\RequirePackage{titlesec} % 提供标题格式设置
+\RequirePackage{tocloft} % 提供目录格式设置
+\RequirePackage{etoolbox} % 提供条件语句和宏包支持
+\RequirePackage{datetime2} % 提供日期时间支持
+\RequirePackage{lastpage} % 提供页码支持
+\RequirePackage{calc} % 提供计算支持
+\RequirePackage{titletoc} % 提供目录标题格式设置
+\RequirePackage{tocbibind} % 目录包含参考文献和索引
+\RequirePackage{indentfirst} % 提供首行缩进支持
+\RequirePackage{parskip} % 提供段落间距支持
+\RequirePackage{setspace} % 提供行距设置
+\RequirePackage{multicol} % 提供多栏支持
+\RequirePackage{pgfplotstable} % 提供表格绘图支持   
+\usetikzlibrary{arrows,positioning} % 引入 TikZ 库，支持箭头和定位
+\RequirePackage{xcolor} % 加载颜色宏包

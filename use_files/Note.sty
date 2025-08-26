@@ -1,0 +1,185 @@
+% \usepackage{graphicx} % 插入图片
+% \usepackage{amsmath} % 数学公式支持
+% \usepackage{amssymb} % 数学符号支持
+% \usepackage{hyperref} % 超链接支持
+% \usepackage{fancyhdr} % 页眉页脚
+% \usepackage{geometry} % 页面布局
+% \usepackage{titlesec} % 标题格式
+% \usepackage{fontspec} % 字体控制（XeLaTeX/LuaLaTeX专用）
+% \usepackage{setspace} % 行距设置
+% \usepackage{enumitem} % 列表格式
+% \usepackage{tikz} % 绘图支持
+% \usepackage{pgfplots} % 绘图支持
+% \usepackage{caption} % 图表标题格式
+% \usepackage{subcaption} % 子图支持     
+% \usepackage{listings} % 代码高亮
+% \usepackage{xcolor} % 颜色支持
+% \usepackage{longtable} % 长表格支持
+% \usepackage{booktabs} % 表格线条支持
+% \usepackage{multirow} % 多行单元格支持
+% \usepackage{array} % 数组支持
+% \usepackage{tabularx} % 自适应表格宽度
+% \usepackage{colortbl} % 表格颜色支持        
+% \usepackage{float} % 浮动体支持
+% \usepackage{placeins} % 浮动体位置控制      
+% \usepackage{ifthen} % 条件语句支持      
+% \usepackage{titlesec} % 标题格式设置
+% \usepackage{tocloft} % 目录格式设置
+% \usepackage{etoolbox} % 条件语句和宏包支持
+% \usepackage{fancyvrb} % 代码块支持
+% \usepackage{pdfpages} % PDF支持
+% \usepackage{lipsum} % 生成示例文本          
+% \usepackage{datetime2} % 日期时间支持
+% \usepackage{lastpage} % 页码支持
+% \usepackage{calc} % 计算支持
+% \usepackage{titlesec} % 标题格式设置
+% \usepackage{titletoc} % 目录标题格式设置        
+% \usepackage{tocbibind} % 目录包含参考文献和索引     
+% \usepackage{indentfirst} % 首行缩进支持     
+% \usepackage{parskip} % 段落间距支持 
+% \usepackage{setspace} % 行距设置
+% \usepackage{multicol} % 多栏支持
+% \usepackage{pgfplotstable} % 表格绘图支持       
+% % 参考文献样式
+% \usepackage[backend=biber, style=numeric]{biblatex} % 使用 numeric 样式（带数字标号）
+% \addbibresource{reference.bib} % 替换成你的.bib 文件实际名称，比如这里假设是包含你提供条目的文件
+% \usepackage{ctex} % 如果文档是中文，添加这个支持中文
+% %\bibliographystyle{unsrt} % 设置按引用顺序排序的样式
+
+%    \newfontfamily{\timesnewroman}{Times New Roman} % 定义Times New Roman字体
+
+% % 自定义页眉页脚样式
+% \fancypagestyle{customstyle}{%
+%     \fancyhf{} % 清除所有页眉页脚设置
+%     \fancyhead[L]{\leftmark} % 左侧显示章标题
+%     \fancyhead[R]{\rightmark} % 右侧显示节标题
+%     \fancyfoot[C]{\thepage} % 底部居中显示页码
+%     \renewcommand{\headrulewidth}{0.4pt} % 页眉分隔线粗细
+%     \renewcommand{\footrulewidth}{0pt} % 页脚无需分隔线
+% }
+
+
+% 文档类声明
+% ctexbook: 中文书籍文档类
+% 12pt: 设置基础字体大小为12磅
+% hyperref: 启用超链接支持(与hyperref宏包配合)
+% a4paper: 使用A4纸张大小
+% UTF8: 使用UTF-8编码
+\documentclass[12pt,hyperref,a4paper,UTF8]{ctexbook}
+
+% 导入自定义样式包
+% He_Style.sty应包含页眉页脚、封面等自定义设置
+\usepackage{He_Style} 
+
+\begin{document}
+% 封面页设置
+\pagestyle{empty} % 封面页不显示页眉页脚
+\covercontent % 调用He_Style中定义的封面模板
+
+% 目录页设置
+\cleardoublepage % 确保从奇数页开始(书籍排版惯例)
+\pagestyle{plain} % 目录页只显示页码(无页眉)
+\pagenumbering{arabic} % 使用阿拉伯数字页码
+\tableofcontents % 生成目录
+\cleardoublepage % 目录后另起一页
+
+% 正文设置
+\pagestyle{customstyle} % 使用He_Style中定义的自定义页眉页脚样式
+\pagenumbering{arabic} % 重置页码为阿拉伯数字(从1开始)
+
+% ==================== 正文内容从这里开始 ====================
+% 建议按章节组织内容，例如：
+
+% 第一章
+\chapter{引言}
+这里是第一章的内容...
+
+% 第一节
+\section{研究背景}
+详细说明研究背景...
+
+% 第二节
+\section{研究目的}
+阐述研究目标和意义...
+
+% 第二章
+\chapter{文献综述}
+对相关文献的回顾和分析...
+
+% 附录(可选)
+\appendix
+\chapter{附录标题}
+附录内容...
+
+% 参考文献(可选)
+% \bibliographystyle{plain} % 参考文献样式
+% \bibliography{references} % 参考文献数据库文件
+
+\end{document}
+
+
+\begin{align*}                                  % 开始无编号多行公式环境
+    \text{税收征收}                      % 第一行文本部分
+    &:                                               % 对齐冒号
+    T_k = \tau \cdot M_0 \cdot (1-\tau)^{k-1}  % 第一行公式
+    \\                                                  % 换行
+    \text{剩余货币}                     % 第二行文本部分
+    &:                                              % 对齐冒号
+    M_k = M_0 \cdot (1-\tau)^k          % 第二行公式
+\end{align*}                                  % 结束环境
+
+
+\printbibliography % 生成参考文献列表，biblatex默认会较好地处理@online类型的url、urldate等字段显示（根据样式会有不同排版）
+
+%%----------- 参考文献 -------------------%%
+%在reference.bib文件中填写参考文献，此处自动生成
+
+%\reference
+
+\end{document}
+
+\subsection{插入参考文献}
+直接使用\verb|\cite{}|即可。
+
+例如：
+   \textit{ 此处引用了文献\cite{0Isaac}。此处引用了文献\cite{2016The}}
+
+
+引用过的文献会自动出现在参考文献中。
+
+\section*{写在最后}
+\subsection{发布地址}
+\begin{itemize}
+    \item https://blog.csdn.net/qq_40216188/article/details/129417395}
+\end{itemize}
+
+%%----------- 参考文献 -------------------%%
+%在reference.bib文件中填写参考文献，此处自动生成
+
+\reference
+
+
+\end{document}
+
+
+
+\begin{itemize}[leftmargin=*, nosep]
+  \item 货币只是促进“物物交换”的工具，不是目的。
+  \item GDP $=$ 货币总量 $\times$ 货币流通速度；哪怕只有 1 元钱，只要流转够快，也能创造巨大的 GDP。
+  \item 货币的价值不在于它本身，而在于它能促成交易、促成劳动和生产的循环。
+\end{itemize}
+  - `leftmargin=2em`：列表左侧缩进2字符（避免内容贴边）。  
+ - `nosep`：去除列表项之间的默认间距（紧凑排版）。  
+
+
+ % main.tex（主文件）
+\documentclass{ctexbook}
+\usepackage{amsmath}
+\includeonly{chapter3.tex} % 仅编译chapter3.tex（其他子文件不编译）
+
+\begin{document}
+\include{chapter1.tex} % 不会编译（因\includeonly指定了chapter3）
+\include{chapter2.tex} % 不会编译
+\include{chapter3.tex} % 会编译
+\end{document}
+

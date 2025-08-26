@@ -1,0 +1,41 @@
+% 文档类声明
+% ctexbook: 中文书籍文档类
+% 12pt: 设置基础字体大小为12磅
+% hyperref: 启用超链接支持(与hyperref宏包配合)
+% a4paper: 使用A4纸张大小
+% UTF8: 使用UTF-8编码
+\documentclass[12pt,hyperref,a4paper,UTF8]{ctexbook}
+
+% 导入自定义样式包
+% He_Style.sty应包含页眉页脚、封面等自定义设置
+\usepackage{He_Style} 
+
+\begin{document}
+
+
+% 封面页设置
+\pagestyle{empty} % 封面页不显示页眉页脚
+\covercontent % 调用He_Style中定义的封面模板
+
+% 目录页设置
+\cleardoublepage % 确保从奇数页开始(书籍排版惯例)
+\pagestyle{plain} % 目录页只显示页码(无页眉)
+\pagenumbering{arabic} % 使用阿拉伯数字页码
+\tableofcontents % 生成目录
+\cleardoublepage % 目录后另起一页
+
+% 正文设置
+\pagestyle{customstyle} % 使用He_Style中定义的自定义页眉页脚样式
+\pagenumbering{arabic} % 重置页码为阿拉伯数字(从1开始)
+
+% ==================== 正文内容从这里开始 ====================
+
+% \includeonly{25.8.22.tex} % 仅编译25.8.22.tex（其他子文件不编译）
+
+
+% \include{25.8.22.tex} % 会编译（因\includeonly指定了25.8.22.tex）
+% \include{25.8.23.tex} % 不会编译
+ \include{25.8.26.tex} 
+
+
+\end{document}
