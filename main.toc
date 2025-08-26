@@ -1,12 +1,100 @@
 \contentsline {chapter}{\centering \heiti \Large 目\hskip 1em\relax 录}{1}{section*.1}%
-\contentsline {section}{\numberline {0.1}Git项目提交远程仓库全流程指南}{1}{section.0.1}%
-\contentsline {subsection}{\numberline {0.1.1}基础操作流程}{1}{subsection.0.1.1}%
-\contentsline {subsection}{\numberline {0.1.2}关键配置说明}{1}{subsection.0.1.2}%
-\contentsline {subsection}{\numberline {0.1.3}高级场景处理}{2}{subsection.0.1.3}%
-\contentsline {subsection}{\numberline {0.1.4}操作验证命令}{2}{subsection.0.1.4}%
-\contentsline {section}{\numberline {0.2}后续修改提交远程仓库标准流程}{2}{section.0.2}%
-\contentsline {subsection}{\numberline {0.2.1}分支决策模型}{3}{subsection.0.2.1}%
-\contentsline {subsection}{\numberline {0.2.2}主分支直接提交流程}{3}{subsection.0.2.2}%
-\contentsline {subsection}{\numberline {0.2.3}特性分支开发流程}{3}{subsection.0.2.3}%
-\contentsline {subsection}{\numberline {0.2.4}关键注意事项}{4}{subsection.0.2.4}%
+\contentsline {section}{\numberline {0.1}Git 核心命令场景全解}{1}{section.0.1}%
+\contentsline {subsection}{\numberline {0.1.1}仓库与初始化}{1}{subsection.0.1.1}%
+\contentsline {subsection}{\numberline {0.1.2}日常开发流程}{1}{subsection.0.1.2}%
+\contentsline {subsection}{\numberline {0.1.3}分支管理策略}{1}{subsection.0.1.3}%
+\contentsline {subsection}{\numberline {0.1.4}远程协作}{2}{subsection.0.1.4}%
+\contentsline {subsection}{\numberline {0.1.5}历史与版本}{2}{subsection.0.1.5}%
+\contentsline {subsection}{\numberline {0.1.6}撤销与修复}{2}{subsection.0.1.6}%
+\contentsline {subsection}{\numberline {0.1.7}配置与优化}{3}{subsection.0.1.7}%
+\contentsline {subsection}{\numberline {0.1.8}命令使用频率统计}{3}{subsection.0.1.8}%
+\contentsline {section}{\numberline {0.2}本地仓库与远程仓库核心区别解析}{3}{section.0.2}%
+\contentsline {subsection}{\numberline {0.2.1}基础特性对比}{4}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {0.2.2}功能定位差异}{4}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {0.2.3}操作机制对比}{4}{subsection.0.2.3}%
+\contentsline {subsection}{\numberline {0.2.4}同步机制详解}{4}{subsection.0.2.4}%
+\contentsline {subsection}{\numberline {0.2.5}存储结构差异}{5}{subsection.0.2.5}%
+\contentsline {subsection}{\numberline {0.2.6}最佳实践指南}{5}{subsection.0.2.6}%
+\contentsline {subsection}{\numberline {0.2.7}典型应用场景}{6}{subsection.0.2.7}%
+\contentsline {section}{\numberline {0.3}Git Status 命令详解}{6}{section.0.3}%
+\contentsline {subsection}{\numberline {0.3.1}核心功能与应用场景}{6}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {0.3.2}实战应用示例}{7}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {0.3.3}高级使用技巧}{8}{subsection.0.3.3}%
+\contentsline {subsection}{\numberline {0.3.4}最佳实践}{8}{subsection.0.3.4}%
+\contentsline {section}{\numberline {0.4}.git 目录结构与文件功能详解}{8}{section.0.4}%
+\contentsline {subsection}{\numberline {0.4.1}一、目录概览}{8}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {0.4.2}二、核心文件解析}{9}{subsection.0.4.2}%
+\contentsline {subsubsection}{1. 提交相关文件}{9}{subsection.0.4.2}%
+\contentsline {subsubsection}{2. 仓库配置文件}{9}{subsection.0.4.2}%
+\contentsline {subsubsection}{3. 仓库描述文件}{9}{subsection.0.4.2}%
+\contentsline {subsubsection}{4. 远程同步记录}{9}{subsection.0.4.2}%
+\contentsline {subsubsection}{5. 当前分支引用}{10}{subsection.0.4.2}%
+\contentsline {subsubsection}{6. 暂存区（Index）文件}{10}{subsection.0.4.2}%
+\contentsline {subsubsection}{7. 分支/标签引用目录}{10}{subsection.0.4.2}%
+\contentsline {subsection}{\numberline {0.4.3}三、核心文件夹解析}{10}{subsection.0.4.3}%
+\contentsline {subsubsection}{1. 对象数据库（Objects）}{10}{subsection.0.4.3}%
+\contentsline {subsubsection}{2. 钩子脚本（Hooks）}{11}{subsection.0.4.3}%
+\contentsline {subsubsection}{3. 日志目录（Logs）}{11}{subsection.0.4.3}%
+\contentsline {subsubsection}{4. 信息目录（Info）}{11}{subsection.0.4.3}%
+\contentsline {subsection}{\numberline {0.4.4}四、关键文件总结}{12}{subsection.0.4.4}%
+\contentsline {subsection}{\numberline {0.4.5}五、注意事项}{12}{subsection.0.4.5}%
+\contentsline {section}{\numberline {0.5}Git Add 命令详解}{12}{section.0.5}%
+\contentsline {subsection}{\numberline {0.5.1}核心功能解析}{12}{subsection.0.5.1}%
+\contentsline {subsection}{\numberline {0.5.2}四大应用场景与示例}{13}{subsection.0.5.2}%
+\contentsline {subsection}{\numberline {0.5.3}工作流位置图示}{13}{subsection.0.5.3}%
+\contentsline {subsection}{\numberline {0.5.4}高级使用技巧}{13}{subsection.0.5.4}%
+\contentsline {subsection}{\numberline {0.5.5}典型错误场景处理}{13}{subsection.0.5.5}%
+\contentsline {subsection}{\numberline {0.5.6}最佳实践指南}{14}{subsection.0.5.6}%
+\contentsline {subsection}{\numberline {0.5.7}工作流示例：功能开发}{14}{subsection.0.5.7}%
+\contentsline {section}{\numberline {0.6}Git Commit 命令详解}{14}{section.0.6}%
+\contentsline {subsection}{\numberline {0.6.1}核心功能解析}{15}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {0.6.2}五大应用场景与示例}{15}{subsection.0.6.2}%
+\contentsline {subsubsection}{工作流位置图示}{15}{Item.21}%
+\contentsline {subsection}{\numberline {0.6.3}高级使用技巧}{16}{subsection.0.6.3}%
+\contentsline {subsection}{\numberline {0.6.4}提交信息规范（行业标准）}{16}{subsection.0.6.4}%
+\contentsline {subsection}{\numberline {0.6.5}典型错误场景处理}{16}{subsection.0.6.5}%
+\contentsline {subsection}{\numberline {0.6.6}最佳实践指南}{17}{subsection.0.6.6}%
+\contentsline {subsection}{\numberline {0.6.7}工作流示例：功能开发}{17}{subsection.0.6.7}%
+\contentsline {section}{\numberline {0.7}Git Diff 命令详解}{18}{section.0.7}%
+\contentsline {subsection}{\numberline {0.7.1}核心功能解析}{18}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {0.7.2}六大应用场景与示例}{18}{subsection.0.7.2}%
+\contentsline {subsection}{\numberline {0.7.3}输出解读指南}{18}{subsection.0.7.3}%
+\contentsline {subsection}{\numberline {0.7.4}高级参数指南}{19}{subsection.0.7.4}%
+\contentsline {subsection}{\numberline {0.7.5}典型工作流应用}{19}{subsection.0.7.5}%
+\contentsline {subsection}{\numberline {0.7.6}最佳实践}{20}{subsection.0.7.6}%
+\contentsline {subsection}{\numberline {0.7.7}可视化工具推荐}{20}{subsection.0.7.7}%
+\contentsline {section}{\numberline {0.8}Git Restore 命令详解}{20}{section.0.8}%
+\contentsline {subsection}{\numberline {0.8.1}核心功能解析}{20}{subsection.0.8.1}%
+\contentsline {subsection}{\numberline {0.8.2}四大应用场景与示例}{20}{subsection.0.8.2}%
+\contentsline {subsection}{\numberline {0.8.3}工作流位置图示}{21}{subsection.0.8.3}%
+\contentsline {subsection}{\numberline {0.8.4}参数使用指南}{21}{subsection.0.8.4}%
+\contentsline {subsection}{\numberline {0.8.5}典型错误场景处理}{21}{subsection.0.8.5}%
+\contentsline {subsection}{\numberline {0.8.6}与旧命令对比}{22}{subsection.0.8.6}%
+\contentsline {subsection}{\numberline {0.8.7}最佳实践}{22}{subsection.0.8.7}%
+\contentsline {subsection}{\numberline {0.8.8}工作流示例：代码回滚}{22}{subsection.0.8.8}%
+\contentsline {section}{\numberline {0.9}Git Branch 命令详解}{23}{section.0.9}%
+\contentsline {subsection}{\numberline {0.9.1}核心功能解析}{23}{subsection.0.9.1}%
+\contentsline {subsection}{\numberline {0.9.2}五大应用场景与示例}{23}{subsection.0.9.2}%
+\contentsline {subsection}{\numberline {0.9.3}分支工作流图示}{24}{subsection.0.9.3}%
+\contentsline {subsection}{\numberline {0.9.4}高级参数指南}{24}{subsection.0.9.4}%
+\contentsline {subsection}{\numberline {0.9.5}典型工作流应用}{24}{subsection.0.9.5}%
+\contentsline {subsection}{\numberline {0.9.6}分支策略对比}{25}{subsection.0.9.6}%
+\contentsline {subsection}{\numberline {0.9.7}最佳实践}{25}{subsection.0.9.7}%
+\contentsline {subsection}{\numberline {0.9.8}问题诊断场景}{25}{subsection.0.9.8}%
+\contentsline {section}{\numberline {0.10}Git 分支功能解析与使用策略}{25}{section.0.10}%
+\contentsline {subsection}{\numberline {0.10.1}分支的核心价值}{25}{subsection.0.10.1}%
+\contentsline {subsection}{\numberline {0.10.2}分支创建策略}{26}{subsection.0.10.2}%
+\contentsline {subsection}{\numberline {0.10.3}典型场景示例}{26}{subsection.0.10.3}%
+\contentsline {subsection}{\numberline {0.10.4}分支生命周期管理}{27}{subsection.0.10.4}%
+\contentsline {subsection}{\numberline {0.10.5}最佳实践指南}{27}{subsection.0.10.5}%
+\contentsline {subsection}{\numberline {0.10.6}决策流程图}{27}{subsection.0.10.6}%
+\contentsline {section}{\numberline {0.11}Git Merge 功能解析与应用场景}{29}{section.0.11}%
+\contentsline {subsection}{\numberline {0.11.1}核心功能解析}{29}{subsection.0.11.1}%
+\contentsline {subsection}{\numberline {0.11.2}五大应用场景与触发时机}{29}{subsection.0.11.2}%
+\contentsline {subsection}{\numberline {0.11.3}合并类型对比}{30}{subsection.0.11.3}%
+\contentsline {subsection}{\numberline {0.11.4}冲突处理流程}{30}{subsection.0.11.4}%
+\contentsline {subsection}{\numberline {0.11.5}合并策略选择}{30}{subsection.0.11.5}%
+\contentsline {subsection}{\numberline {0.11.6}最佳实践指南}{30}{subsection.0.11.6}%
+\contentsline {subsection}{\numberline {0.11.7}典型工作流示例}{31}{subsection.0.11.7}%
+\contentsline {subsection}{\numberline {0.11.8}合并 vs 变基}{31}{subsection.0.11.8}%
 \contentsfinish 
