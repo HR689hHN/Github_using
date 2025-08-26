@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.18)  26 AUG 2025 10:28
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.8.18)  26 AUG 2025 12:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1708,6 +1708,66 @@ Underfull \hbox (badness 3189) in paragraph at lines 1013--1013
  []
 
 Missing character: There is no Ⅲ (U+2162) in font [lmroman12-regular]:mapping=tex-text;!
+./25.8.26.tex:1026: You can't use `macro parameter character #' in vertical mode.
+l.1026 #
+         1. 查看修改状态（可选）
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./25.8.26.tex:1029: You can't use `macro parameter character #' in vertical mode.
+l.1029 #
+         2. 添加所有修改到暂存区
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./25.8.26.tex:1030: You can't use `macro parameter character #' in horizontal mode.
+l.1030 git add .   #
+                     或指定文件：git add 文件名
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./25.8.26.tex:1032: You can't use `macro parameter character #' in vertical mode.
+l.1032 #
+         3. 提交到本地仓库
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./25.8.26.tex:1035: You can't use `macro parameter character #' in vertical mode.
+l.1035 #
+         4. 推送到GitHub
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[28]
+./25.8.26.tex:1036: You can't use `macro parameter character #' in horizontal mode.
+<recently read> ##
+                  
+l.1036 git push origin 分支名   #
+                               通常为 main 或 master
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
 )
 
 
@@ -1717,7 +1777,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[28] 
+[29] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./main.aux (./25.8.26.aux))
  ***********
@@ -1734,10 +1794,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  46633 strings out of 473832
  1162081 string characters out of 5729481
- 1623983 words of memory out of 5000000
+ 1623982 words of memory out of 5000000
  68916 multiletter control sequences out of 15000+600000
  565956 words of font info for 116 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 103i,11n,114p,1196b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,12n,114p,1196b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (34 pages).
+Output written on main.pdf (35 pages).
