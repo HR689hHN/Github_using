@@ -1,0 +1,161 @@
+\section{Git项目提交远程仓库全流程指南}
+\textbf{核心要义：}
+通过五步标准化操作完成本地项目到GitHub的完整提交，涵盖仓库初始化、文件追踪、分支管理、远程关联与推送策略，解决常见错误场景。
+
+\subsection{基础操作流程}
+\begin{enumerate}[leftmargin=*, nosep]
+\item \textbf{初始化本地仓库}\\
+创建项目目录并进入，执行初始化命令：\\
+\texttt{mkdir project-name \&\& cd project-name} \\
+\texttt{git init}\quad \textit{\# 生成.git隐藏目录}
+
+\item \textbf{添加文件到暂存区}\\
+创建项目文件后执行追踪操作：\\
+\texttt{touch README.md} \quad \textit{\# 创建示例文件} \\
+\texttt{git add .}\quad \textit{\# 添加所有文件（或指定文件名）}
+
+\item \textbf{提交到本地仓库}\\
+记录版本快照并添加描述：\\
+\texttt{git commit -m "初始化项目"}\quad \textit{\# 提交信息需明确}
+
+\item \textbf{关联远程仓库}\\
+复制GitHub仓库HTTPS/SSH链接后执行：\\
+\texttt{git remote add origin https://github.com/HR689hHN/Computer.git}
+
+\item \textbf{推送到远程分支}\\
+首次推送需建立分支关联：\\
+\texttt{git push -u origin main}\quad \textit{\# -u设置默认上游分支}
+\end{enumerate}
+
+\subsection{关键配置说明}
+\begin{enumerate}[leftmargin=*, nosep]
+\item \textbf{身份信息配置}\\
+首次使用Git必须设置全局身份（与GitHub一致）：\\
+\texttt{git config --global user.name "YourName"} \\
+\texttt{git config --global user.email "email@example.com"}
+
+\item \textbf{分支命名规范}\\
+现代Git默认使用\texttt{main}分支（历史用\texttt{master}）：\\
+\texttt{git branch -m master main} \quad \textit{\# 旧分支重命名}
+
+\item \textbf{文件忽略规则}\\
+创建\texttt{.gitignore}过滤非追踪文件：
+\begin{verbatim}
+# 示例内容
+node_modules/
+.env
+*.log
+\end{verbatim}
+\end{enumerate}
+
+\subsection{高级场景处理}
+\begin{enumerate}[leftmargin=*, nosep]
+\item \textbf{推送冲突解决}\\
+当远程有本地缺失的提交（如初始化README）：\\
+\texttt{git pull origin main --rebase} \quad \textit{\# 变基合并} \\
+\texttt{git push origin main}
+
+\item \textbf{远程关联错误修正}\\
+"origin已存在"时的处理方案：\\
+\texttt{git remote set-url origin 新URL} \quad \textit{\# 更新仓库地址} \\
+\texttt{git remote rm origin} \quad \textit{\# 删除后重新添加}
+
+\item \textbf{空仓库推送策略}\\
+本地无提交内容时需先创建初始提交：\\
+\texttt{echo "\# Project" > README.md} \\
+\texttt{git add . \&\& git commit -m "init"}
+\end{enumerate}
+
+\subsection{操作验证命令}
+\begin{tabular}{ll}
+\textbf{查看仓库状态} & \texttt{git status} \\
+\textbf{检查远程关联} & \texttt{git remote -v} \\
+\textbf{验证分支关联} & \texttt{git branch -vv} \\
+\textbf{查看提交历史} & \texttt{git log --oneline} \\
+\end{tabular}
+
+\vspace{1em}
+\textbf{最佳实践：} 推送前执行\texttt{git status}确认无未跟踪文件，使用\texttt{git push}前优先\texttt{git pull --rebase}避免冲突，敏感信息务必写入\texttt{.gitignore}。
+
+
+\section{后续修改提交远程仓库标准流程}
+\textbf{核心策略：}
+基于主分支（main/master）直接提交或创建特性分支并行开发，通过四步标准化操作实现高效更新，匹配不同协作场景需求。
+
+\subsection{分支决策模型}
+\begin{enumerate}[leftmargin=*, nosep]
+\item \textbf{直接主分支提交} \\
+\textit{适用场景：个人项目/紧急修复/微小变更}\\
+流程：工作目录修改 → 暂存 → 提交 → 推送\\
+优势：路径最短，适合独立开发者
+
+\item \textbf{创建特性分支提交} \\
+\textit{适用场景：团队协作/功能开发/长期修改}\\
+流程：创建分支 → 开发 → 本地测试 → 推送分支 → PR合并\\
+优势：隔离风险，支持并行开发
+\end{enumerate}
+
+\subsection{主分支直接提交流程}
+\begin{enumerate}[leftmargin=*, nosep]
+\item \textbf{修改工作文件} \\
+在项目目录编辑代码文档：\\
+\texttt{vim index.html} \quad \textit{\# 或IDE可视化编辑}
+
+\item \textbf{查看变更状态} \\
+确认修改范围及内容：\\
+\texttt{git status} \quad \textit{\# 显示红标未暂存文件} \\
+\texttt{git diff} \quad \textit{\# 查看具体代码变动}
+
+\item \textbf{暂存并提交变更} \\
+选择需提交的修改：\\
+\texttt{git add .} \quad \textit{\# 添加所有修改} \\
+\texttt{git add src/} \quad \textit{\# 添加特定目录} \\
+\texttt{git commit -m "修复登录页面样式异常"}
+
+\item \textbf{推送到远程仓库} \\
+同步至云端（首次后无需-u参数）：\\
+\texttt{git push origin main} \quad \textit{\# 关联后简化为 git push}
+\end{enumerate}
+
+\subsection{特性分支开发流程}
+\begin{enumerate}[leftmargin=*, nosep]
+\item \textbf{创建开发分支} \\
+基于主分支新建工作分支：\\
+\texttt{git checkout -b feat/user-profile} \\
+命名规范：\texttt{feat/}功能 \texttt{fix/}修复 \texttt{docs/}文档
+
+\item \textbf{分支内迭代开发} \\
+在独立分支完成修改：\\
+\texttt{git add . \&\& git commit -m "增加头像上传功能"} \\
+\textit{※ 可多次提交形成开发历史}
+
+\item \textbf{推送到远程分支} \\
+上传分支至GitHub：\\
+\texttt{git push -u origin feat/user-profile}
+
+\item \textbf{合并到主分支} \\
+通过PR/MR完成集成：\\
+\begin{itemize}[leftmargin=*]
+\item GitHub：创建 Pull Request
+\item GitLab：创建 Merge Request
+\item 命令行合并：\texttt{git checkout main \&\& git merge feat/user-profile}
+\end{itemize}
+\end{enumerate}
+
+\subsection{关键注意事项}
+\begin{tabular}{p{0.2\textwidth}p{0.75\textwidth}}
+\textbf{冲突预防} & 推送前执行 \texttt{git pull --rebase} 避免版本冲突 \\
+\textbf{原子提交} & 单次提交仅完成单一功能（避免混合修改） \\
+\textbf{信息规范} & 提交消息格式：\texttt{<类型>(<范围>): <描述>} \\
+\textbf{分支清理} & 合并后删除本地分支：\texttt{git branch -d feat/user-profile} \\
+\textbf{敏感防护} & 修改内容若含密钥需重置历史：\texttt{git filter-repo --force} \\
+\end{tabular}
+
+\vspace{1em}
+\textbf{操作效率工具链：}
+\begin{itemize}[leftmargin=*, nosep]
+\item \texttt{git stash}：临时保存未完成修改
+\item \texttt{git restore}：撤销工作区修改
+\item \texttt{.gitignore}：配置忽略文件模板
+\item GitHub Desktop：可视化分支管理
+\end{itemize}
