@@ -1,0 +1,160 @@
+\section{误删分支恢复操作指南}
+\textbf{一句话总结：}  
+通过Git的引用日志和分支追踪机制，可高效恢复误删分支，核心步骤为：定位历史提交 → 重建分支指针 → 同步远程仓库。
+
+\subsection{恢复流程详解}
+\begin{enumerate}[leftmargin=*, nosep]
+    \item \textbf{查找分支最后提交} \\
+    \texttt{\$ git reflog} \quad \textcolor{gray}{// 显示所有操作历史}
+    \begin{verbatim}
+8a3f5e9 (HEAD -> main) HEAD@{0}: checkout: moving from feature/login to main
+d2b4c6c HEAD@{1}: commit: 用户登录优化
+8a3f5e9 HEAD@{2}: checkout: moving from main to feature/login
+    \end{verbatim}
+    
+    \item \textbf{重建本地分支} \\
+    \texttt{\$ git branch feature/login d2b4c6c} \quad \textcolor{gray}{// 基于提交哈希重建}
+    
+    \item \textbf{验证分支内容} \\
+    \texttt{\$ git checkout feature/login} \\
+    \texttt{\$ git log --oneline} \quad \textcolor{gray}{// 确认提交历史完整}
+    
+    \item \textbf{恢复远程分支} \\
+    \texttt{\$ git push -u origin feature/login}
+\end{enumerate}
+
+\subsection{恢复原理图示}
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+\node (reflog) [draw] {引用日志};
+\node (commit) [draw, right of=reflog] {提交记录};
+\node (local) [draw, below of=commit] {本地分支};
+\node (remote) [draw, below of=local] {远程分支};
+
+\draw [->, blue] (reflog) -- node[right] {1. 定位} (commit);
+\draw [->, blue] (commit) -- node[right] {2. 重建} (local);
+\draw [->, blue] (local) -- node[right] {3. 推送} (remote);
+\end{tikzpicture}
+\end{center}
+
+\subsection{关键恢复技术}
+\subsubsection{1. 引用日志查询}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \texttt{git reflog}：显示所有HEAD变更记录
+    \item \texttt{git reflog show --all}：显示所有引用变更
+    \item 时间过滤：\texttt{git reflog --since="2 days ago"}
+\end{itemize}
+
+\subsubsection{2. 分支重建方法}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{场景} & \textbf{命令} \\
+    \midrule
+    已知提交哈希 & \texttt{git branch <分支名> <commit\_hash>} \\
+    最后操作记录 & \texttt{git branch <分支名> HEAD@\{1\}} \\
+    远程分支恢复 & \texttt{git push origin <commit\_hash>:refs/heads/<分支名>} \\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{3. 恢复验证}
+\begin{itemize}[leftmargin=*, nosep]
+    \item 提交历史：\texttt{git log -5 --oneline}
+    \item 文件验证：\texttt{git show HEAD:filename}
+    \item 分支关联：\texttt{git branch -vv}
+\end{itemize}
+
+\subsection{特殊场景处理}
+\begin{enumerate}[leftmargin=*, nosep]
+    \item \textbf{引用日志被清除} \\
+    \texttt{\$ git fsck --full} \quad \textcolor{gray}{// 检查悬空对象} \\
+    \texttt{\$ git show d2b4c6c} \quad \textcolor{gray}{// 手动验证提交}
+    
+    \item \textbf{仅删除远程分支} \\
+    \texttt{\$ git checkout -b feature/login} \\
+    \texttt{\$ git push -u origin feature/login}
+    
+    \item \textbf{分支名称遗忘} \\
+    \texttt{\$ git log --all --grep="登录功能"} \quad \textcolor{gray}{// 按提交信息搜索}
+\end{enumerate}
+
+\subsection{预防措施}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{分支保护}：
+    \begin{itemize}[leftmargin=*, nosep]
+        \item GitHub/GitLab设置保护分支
+        \item \texttt{git config --global branch.autosetupmerge always}
+    \end{itemize}
+    
+    \item \textbf{定期备份}：
+    
+\begin{itemize}[leftmargin=*, nosep]
+        \item 创建存档标签：\texttt{git tag archive/feature/login-v1 feature/login}
+        \item 推送备份仓库：\texttt{git push backup-repo --all}
+    \end{itemize}
+    
+    \item \textbf{操作规范}：
+    
+\begin{itemize}[leftmargin=*, nosep]
+        \item 使用 \texttt{git branch -d} 而非 \texttt{-D}
+        \item 删除前执行：\texttt{git merge --no-ff feature/login}
+    \end{itemize}
+    
+    \item \textbf{工具支持}：
+    
+\begin{itemize}[leftmargin=*, nosep]
+        \item IDE分支管理（VSCode/GitKraken）
+        \hline
+        \item 日志可视化：\texttt{git log --graph --all --oneline}
+    \end{itemize}
+\end{itemize}
+
+\subsection{恢复工作流示例}
+\begin{verbatim}
+# 场景：误删feature/login分支
+$ git branch -D feature/login
+
+# 步骤1：查询操作记录
+$ git reflog
+d2b4c6c HEAD@{3}: commit: 用户登录优化
+8a3f5e9 HEAD@{4}: checkout: moving from main to feature/login
+
+# 步骤2：重建分支
+$ git branch feature/login d2b4c6c
+
+# 步骤3：验证内容
+$ git checkout feature/login
+$ ls login.js  # 确认关键文件存在
+
+# 步骤4：恢复远程
+$ git push -u origin feature/login
+
+# 步骤5：确认恢复
+$ git branch -a
+  feature/login
+  remotes/origin/feature/login
+\end{verbatim}
+
+\subsection{图形化工具操作}
+\begin{itemize}[leftmargin=*, nosep]
+    \item \textbf{VS Code}：
+    \begin{itemize}[leftmargin=*, nosep]
+        \item GitLens插件 → REFERENCE HISTORY
+        \item 右键提交记录 → "Create Branch..."
+    \end{itemize}
+    
+    \item \textbf{GitKraken}：
+    
+\begin{itemize}[leftmargin=*, nosep]
+        \item 左侧菜单 → REFLOG
+        \item 右键提交 → "Create branch here"
+    \end{itemize}
+    
+    \item \textbf{Sourcetree}：
+    
+\begin{itemize}[leftmargin=*, nosep]
+        \item 视图 → "Reflog"
+        \item 右键记录 → "创建分支"
+    \end{itemize}
+\end{itemize}
